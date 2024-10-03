@@ -4,6 +4,7 @@ function FocusTimer() {
   const [treeState, setTreeState] = React.useState('seed'); // 'seed', 'grown', 'dead'
   const [forest, setForest] = React.useState([]);
   const [windowFocused, setWindowFocused] = React.useState(true);
+  const [failMessage, setFailMessage] = React.useState(''); // New state for failure message
 
   React.useEffect(() => {
     let timer = null;
@@ -35,15 +36,18 @@ function FocusTimer() {
   const resetTimer = () => {
     setTimeLeft(1500); // Reset to 25 minutes
     setTreeState('seed');
+    setFailMessage('');  // Clear the fail message on reset
   };
 
   const handleStartPause = () => {
     if (isRunning) {
       setIsRunning(false);
       setTreeState('dead');
+      setFailMessage('You lost your focus. Your tree disintegrated.'); // Show fail message
     } else {
       setIsRunning(true);
       setTreeState('seed');
+      setFailMessage('');  // Clear fail message when restarting the timer
     }
   };
 
@@ -59,7 +63,9 @@ function FocusTimer() {
       setWindowFocused(!document.hidden);
       if (document.hidden && isRunning) {
         setTreeState('dead');
+        setFailMessage('You lost your focus. Your tree disintegrated.'); // Show fail message
         setIsRunning(false);
+        resetTimer(); // Reset the timer when focus is lost
       }
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
@@ -76,6 +82,10 @@ function FocusTimer() {
       >
         {isRunning ? 'Pause' : 'Start'}
       </button>
+
+      {/* Fail message display */}
+      {failMessage && <div className="mt-4 text-red-500 font-bold">{failMessage}</div>}
+
       <div className="mt-6">
         {treeState === 'seed' && <div className="tree">🌱</div>}
         {treeState === 'grown' && <div className="tree grown-tree">🌳</div>}
