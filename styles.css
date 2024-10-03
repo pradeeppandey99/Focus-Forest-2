@@ -1,17 +1,100 @@
-.tree {
-  width: 100px;
-  height: 100px;
-  transition: opacity 1s ease-in-out;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.app-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px auto; /* Centers the sapling and grown trees */
+  min-height: 100vh;
+  background: linear-gradient(#dfffe4, #bde4cf); /* Light green background */
+  overflow: hidden;
+  position: relative;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.tree {
+  font-size: 2rem;
 }
 
 .grown-tree {
-  opacity: 1;
+  font-size: 4rem; /* Increase size of tree when fully grown */
 }
 
 .dead-tree {
-  opacity: 0.2;
+  font-size: 3rem;
+}
+
+.forest-button {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  background-color: #f8d5b3;
+  border: 1px solid #f2a374;
+}
+
+.forest-container {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .app-container {
+    padding: 20px;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+
+  .tree {
+    font-size: 1.5rem;
+  }
+
+  .grown-tree {
+    font-size: 3rem;
+  }
+}
+
+/* Cloud animation for background */
+.clouds {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: url('clouds.png') repeat-x;
+  animation: moveClouds 30s linear infinite;
+}
+
+@keyframes moveClouds {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 0; }
 }
