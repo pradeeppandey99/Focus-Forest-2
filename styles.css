@@ -1,120 +1,13 @@
-/* Basic layout and mobile-first design adjustments */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.tree {
+  width: 100px;
+  height: 100px;
+  transition: opacity 1s ease-in-out;
 }
 
-body, html {
-    min-height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
+.grown-tree {
+  opacity: 1;
 }
 
-.tree-container {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-}
-
-.ground {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 8px;
-    background: linear-gradient(to right, #7C5E42, #5B3E31, #7C5E42);
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.natural-background {
-    position: relative;
-    overflow: hidden;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.sky, .grass {
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: -1;
-}
-
-.sky {
-    top: 0;
-    height: 70%;
-    background: linear-gradient(180deg, #87CEEB 0%, #E0F4FF 100%);
-}
-
-.grass {
-    bottom: 0;
-    height: 30%;
-    background: linear-gradient(180deg, #90EE90 0%, #228B22 100%);
-    border-top-left-radius: 50% 20%;
-    border-top-right-radius: 50% 20%;
-}
-
-.content-container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    text-align: center;
-}
-
-.bg-box {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Timer specific styling */
-.timer-text {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #15803D;
-    margin-bottom: 1rem;
-}
-
-button {
-    width: 100%;
-    padding: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-    color: white;
-    cursor: pointer;
-}
-
-button.start-btn {
-    background-color: #15803D;
-}
-
-button.forest-btn {
-    background-color: #6B8E23;
-    margin-top: 1rem;
-}
-
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-/* Animations */
-@keyframes withering {
-    0% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
-    50% { transform: translateX(-50%) scale(0.8) rotate(5deg); opacity: 0.7; }
-    100% { transform: translateX(-50%) scale(0) rotate(-10deg); opacity: 0; }
-}
-
-@keyframes grow {
-    from { transform: translateX(-50%) scale(0.8); }
-    to { transform: translateX(-50%) scale(1); }
+.dead-tree {
+  opacity: 0.2;
 }
