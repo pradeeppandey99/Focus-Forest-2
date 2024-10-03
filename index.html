@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Focus Timer App</title>
-  <link href="styles.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Focus Timer</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-green-100 flex flex-col items-center justify-center h-screen">
+<body>
+  <div id="app" class="app-container">
+    <!-- The timer and sapling will be rendered here by React -->
+  </div>
 
-  <div id="app"></div>
-
-  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
-  <script src="app.js" type="text/babel"></script>
-
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
