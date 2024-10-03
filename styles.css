@@ -2,6 +2,10 @@
   width: 100px;
   height: 100px;
   transition: opacity 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto; /* Centers the sapling and grown trees */
 }
 
 .grown-tree {
