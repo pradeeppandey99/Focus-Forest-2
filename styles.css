@@ -1,100 +1,175 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-body, html {
-  height: 100%;
-  font-family: 'Arial', sans-serif;
+.landing-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #e6ffea, #ccffdd);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(#dfffe4, #bde4cf); /* Light green background */
-  overflow: hidden;
-  position: relative;
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+.title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #1f6f2e;
+    margin-bottom: 0.5rem;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.subtitle {
+    font-size: 1.25rem;
+    color: #2f9f4f;
 }
 
-button:focus {
-  outline: none;
+.main-content {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 28rem;
 }
 
-.tree {
-  font-size: 2rem;
+.timer-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
-.grown-tree {
-  font-size: 4rem; /* Increase size of tree when fully grown */
+.timer-icon {
+    width: 2rem;
+    height: 2rem;
+    color: #2f9f4f;
+    margin-right: 0.5rem;
 }
 
-.dead-tree {
-  font-size: 3rem;
+.timer-text {
+    font-size: 1.875rem;
+    font-weight: bold;
 }
 
-.forest-button {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  background-color: #f8d5b3;
-  border: 1px solid #f2a374;
+.tree-container {
+    position: relative;
+    height: 16rem;
+    background-color: #f0fff4;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
 }
 
-.forest-container {
-  margin-top: 20px;
+.ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20%;
+    background-color: #8B4513;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.5rem;
+.tree-icon {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.2);
+    color: #2f9f4f;
+    transition: all 0.5s ease;
+    width: 100px;
+    height: 100px;
+}
+
+.tree-icon.withered {
+    color: #8b4513;
+    transform: translateX(-50%) scale(0.9) rotate(5deg);
+    opacity: 0.7;
+}
+
+.button-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    flex: 1;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.start-button {
+    background-color: #2f9f4f;
+    color: white;
+}
+
+.start-button:hover {
+    background-color: #248f3f;
+}
+
+.distraction-button {
+    background-color: #ef4444;
+    color: white;
+}
+
+.distraction-button:hover {
+    background-color: #dc2626;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.stop-button {
+    background-color: #ef4444;
+    color: white;
+}
+
+.stop-button:hover {
+    background-color: #dc2626;
+}
+
+@keyframes withering {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
-
-  .app-container {
-    padding: 20px;
+  50% {
+    transform: scale(0.8) rotate(5deg);
+    opacity: 0.7;
   }
-
-  button {
-    font-size: 1rem;
-  }
-
-  .tree {
-    font-size: 1.5rem;
-  }
-
-  .grown-tree {
-    font-size: 3rem;
+  100% {
+    transform: scale(0) rotate(-10deg);
+    opacity: 0;
   }
 }
 
-/* Cloud animation for background */
-.clouds {
-  position: absolute;
-  top: 10%;
-  left: 0;
-  width: 100%;
-  height: 200px;
-  background: url('clouds.png') repeat-x;
-  animation: moveClouds 30s linear infinite;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
-@keyframes moveClouds {
-  0% { background-position: 0 0; }
-  100% { background-position: 1000px 0; }
+.animate-withering {
+  animation: withering 3s ease-in-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
 }
